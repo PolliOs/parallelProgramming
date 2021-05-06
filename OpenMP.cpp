@@ -17,7 +17,8 @@ double LeibnizFormula(int l, int r) {
 }
 
 int main(int argc, char** argv) {
-    int n;
+    int n = 100000;
+    THREAD_NUM = 8;
     cout << "Enter num of threads:";
     cin >> THREAD_NUM;
     cout << "Enter n:";
@@ -26,16 +27,6 @@ int main(int argc, char** argv) {
     int num_per_thread = ceil(n / THREAD_NUM);
     double res = 0;
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
-//#pragma omp parallel for
-//    for ( int k=0; k<THREAD_NUM; k++) {
-//        tempRes = LeibnizFormula(k*num_per_thread, min(n, (k+1)*num_per_thread));
-//        std::cout << "tempRes = " << tempRes << "k = " << k << "\n";
-////        res =  res + tempRes;
-//#pragma omp critical
-//        std::cout << "tempRes = " << tempRes << "\n";
-//        res =  res + tempRes;
-   // }
-
 #pragma omp parallel
     {
         double tempRes = 0;

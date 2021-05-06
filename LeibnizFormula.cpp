@@ -95,13 +95,13 @@ int main(int argc, char* argv[]) {
     MPI_Status status;
     if (ProcRank == 0) {
         cout << "res = " << res << "\n";
-        printf("Time of consistent execution = %f\n", Duration);
+        printf("Time of consistent execution = %.20f\n", Duration);
 
         Start = MPI_Wtime();
         consistentResultCalculation(N, res);
         Finish = MPI_Wtime();
 
-        printf("Time of parallel execution = %f\n", Finish - Start);
+        printf("Time of parallel execution = %.20f\n", Finish - Start);
     }
 
 
